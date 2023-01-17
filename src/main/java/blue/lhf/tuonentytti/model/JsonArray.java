@@ -4,6 +4,7 @@ import java.util.*;
 
 import static java.util.stream.Collectors.joining;
 
+@SuppressWarnings("unused") // API
 public class JsonArray extends ArrayList<JsonValue<?>> implements JsonValue<List<?>> {
     public JsonArray() {
 
@@ -15,15 +16,6 @@ public class JsonArray extends ArrayList<JsonValue<?>> implements JsonValue<List
 
     public JsonArray(JsonValue<?>... values) {
         this(List.of(values));
-    }
-
-    public static JsonArray from(final Object... values) {
-        final JsonArray array = new JsonArray();
-        for (final Object object : values) {
-            array.add(JsonValue.coerce(object));
-        }
-
-        return array;
     }
 
     @Override

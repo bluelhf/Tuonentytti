@@ -4,6 +4,7 @@ import java.util.*;
 
 import static java.util.stream.Collectors.joining;
 
+@SuppressWarnings("unused") // API
 public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<JsonMember>> {
     public JsonObject() {
 
@@ -27,6 +28,14 @@ public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<
         }
 
         return false;
+    }
+
+    public JsonValue<?> getFirst(final String key) {
+        for (final JsonMember member : this) {
+            if (member.key().equals(key)) return member.value();
+        }
+
+        return null;
     }
 
     public List<JsonValue<?>> get(final String key) {

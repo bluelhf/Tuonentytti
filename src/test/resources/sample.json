@@ -1,0 +1,26 @@
+{
+  "numbers": {
+    "integer": 42,
+    "float": 3.14,
+    "exponent": 6e-34,
+    "negative": -12
+  },
+  "arrays": [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+  ],
+  "objects": {
+    "obj1": {
+      "key1": "value1",
+      "key2": "value2"
+    },
+    "obj2": {
+      "key3": "value3",
+      "key4": "value4"
+    }
+  },
+  "string": "Hello \"World\" \n\r\t\b\f\\\/",
+  "boolean": true,
+  "null": null
+}

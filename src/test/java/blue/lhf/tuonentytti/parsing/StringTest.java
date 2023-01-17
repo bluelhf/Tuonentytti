@@ -1,12 +1,12 @@
-package blue.lhf.tuonentytti;
+package blue.lhf.tuonentytti.parsing;
 
-import blue.lhf.tuonentytti.source.*;
+import blue.lhf.tuonentytti.model.JsonString;
+import blue.lhf.tuonentytti.reader.StringSource;
 import org.junit.*;
 
-import java.util.*;
+import java.util.Random;
 
-import static blue.lhf.tuonentytti.model.JsonValue.coerce;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThrows;
 
 public class StringTest {
 
@@ -17,11 +17,11 @@ public class StringTest {
 
     protected void testFN(final String input, final String expected) throws Exception {
         final StringSource reader = new StringSource("\"" + input + "\"");
-        assertEquals("False negative string", coerce(expected), Json.readString(reader));
+        Assert.assertEquals("False negative string", new JsonString(expected), JsonParser.readString(reader));
     }
 
-    protected void testFP(final StringSource reader) throws Exception {
-        assertNull("False positive string", Json.readString(reader));
+    protected void testFP(final StringSource reader) {
+        assertThrows("False positive string", JsonParseException.class, () -> JsonParser.readString(reader));
     }
 
     @Test
@@ -50,17 +50,17 @@ public class StringTest {
     }
 
     @Test
-    public void testNoQuotes() throws Exception {
+    public void testNoQuotes() {
         testFP(new StringSource("no quotes here"));
     }
 
     @Test
-    public void testTrailing() throws Exception {
+    public void testTrailing() {
         testFP(new StringSource("\"one quote"));
     }
 
     @Test
-    public void testLeading() throws Exception {
+    public void testLeading() {
         testFP(new StringSource("one quote\""));
     }
 }
