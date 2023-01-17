@@ -30,9 +30,9 @@ public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<
         return false;
     }
 
-    public JsonValue<?> getFirst(final String key) {
+    public JsonMember getFirst(final String key) {
         for (final JsonMember member : this) {
-            if (member.key().equals(key)) return member.value();
+            if (member.key().equals(key)) return member;
         }
 
         return null;
