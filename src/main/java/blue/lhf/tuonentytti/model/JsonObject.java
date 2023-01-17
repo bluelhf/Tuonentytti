@@ -38,7 +38,7 @@ public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<
         return null;
     }
 
-    public List<JsonValue<?>> get(final String key) {
+    public List<JsonValue<?>> getValues(final String key) {
         final List<JsonValue<?>> values = new ArrayList<>();
         for (final JsonMember member : this) {
             if (member.key().equals(key)) values.add(member.value());
