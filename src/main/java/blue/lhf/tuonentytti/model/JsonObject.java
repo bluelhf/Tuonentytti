@@ -16,7 +16,7 @@ public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<
 
     public boolean containsKey(final String key) {
         for (final JsonMember member : this) {
-            if (member.key().equals(key)) return true;
+            if (member.key().get().equals(key)) return true;
         }
 
         return false;
@@ -32,7 +32,7 @@ public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<
 
     public JsonMember getFirst(final String key) {
         for (final JsonMember member : this) {
-            if (member.key().equals(key)) return member;
+            if (member.key().get().equals(key)) return member;
         }
 
         return null;
@@ -41,7 +41,7 @@ public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<
     public List<JsonValue<?>> getValues(final String key) {
         final List<JsonValue<?>> values = new ArrayList<>();
         for (final JsonMember member : this) {
-            if (member.key().equals(key)) values.add(member.value());
+            if (member.key().get().equals(key)) values.add(member.value());
         }
 
         return values;
@@ -52,7 +52,7 @@ public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<
         final ListIterator<JsonMember> memberIter = listIterator();
         while (memberIter.hasNext()) {
             final JsonMember next = memberIter.next();
-            if (next.key().equals(key)) {
+            if (next.key().get().equals(key)) {
                 removed.add(next.value());
                 memberIter.remove();
             }
