@@ -2,33 +2,32 @@ package blue.lhf.tuonentytti.parsing;
 
 import blue.lhf.tuonentytti.model.*;
 import blue.lhf.tuonentytti.reader.StringSource;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PrimitiveTest {
     @Test
     public void testTrue() throws Exception {
-        assertEquals("False negative primitive", new JsonBoolean(true), JsonParser.readBoolean(new StringSource("true")));
+        assertEquals(new JsonBoolean(true), JsonParser.readBoolean(new StringSource("true")), "False negative primitive");
     }
 
     @Test
     public void testFalse() throws Exception {
-        assertEquals("False negative primitive", new JsonBoolean(false), JsonParser.readBoolean(new StringSource("false")));
+        assertEquals(new JsonBoolean(false), JsonParser.readBoolean(new StringSource("false")), "False negative primitive");
     }
 
     @Test
     public void testNull() throws Exception {
-        assertEquals("False negative primitive", new JsonNull<>(), JsonParser.readNull(new StringSource("null")));
+        assertEquals(new JsonNull<>(), JsonParser.readNull(new StringSource("null")), "False negative primitive");
     }
 
     @Test
     public void testNonsense() {
-        assertThrows("False positive primitive", JsonParseException.class, () -> JsonParser.readBoolean(new StringSource("boobs")));
+        assertThrows(JsonParseException.class, () -> JsonParser.readBoolean(new StringSource("boobs")), "False positive primitive");
     }
 
     @Test
     public void testNothing() {
-        assertThrows("False positive primitive", JsonParseException.class, () -> JsonParser.readBoolean(new StringSource("")));
+        assertThrows(JsonParseException.class, () -> JsonParser.readBoolean(new StringSource("")), "False positive primitive");
     }
 }

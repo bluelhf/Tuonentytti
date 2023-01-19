@@ -2,11 +2,11 @@ package blue.lhf.tuonentytti.parsing;
 
 import blue.lhf.tuonentytti.model.JsonString;
 import blue.lhf.tuonentytti.reader.StringSource;
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 import java.util.Random;
 
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StringTest {
 
@@ -17,11 +17,11 @@ public class StringTest {
 
     protected void testFN(final String input, final String expected) throws Exception {
         final StringSource reader = new StringSource("\"" + input + "\"");
-        Assert.assertEquals("False negative string", new JsonString(expected), JsonParser.readString(reader));
+        assertEquals(new JsonString(expected), JsonParser.readString(reader), "False negative " + input);
     }
 
     protected void testFP(final StringSource reader) {
-        assertThrows("False positive string", JsonParseException.class, () -> JsonParser.readString(reader));
+        assertThrows(JsonParseException.class, () -> JsonParser.readString(reader), "False positive " + reader);
     }
 
     @Test
