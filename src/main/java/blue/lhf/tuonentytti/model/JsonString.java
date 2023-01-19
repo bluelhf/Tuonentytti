@@ -1,5 +1,7 @@
 package blue.lhf.tuonentytti.model;
 
+import blue.lhf.tuonentytti.parsing.JsonLexer;
+
 public record JsonString(String inner) implements JsonValue<String> {
 
     @Override
@@ -9,6 +11,6 @@ public record JsonString(String inner) implements JsonValue<String> {
 
     @Override
     public String toString() {
-        return "\"" + inner + "\"";
+        return "\"" + JsonLexer.quote(inner) + "\"";
     }
 }

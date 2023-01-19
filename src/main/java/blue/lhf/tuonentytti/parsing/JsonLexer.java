@@ -1,5 +1,6 @@
 package blue.lhf.tuonentytti.parsing;
 
+import blue.lhf.tuonentytti.model.JsonString;
 import blue.lhf.tuonentytti.reader.Source;
 
 import java.io.IOException;
@@ -112,6 +113,18 @@ public class JsonLexer {
             default ->
                 throw new JsonParseException("Unknown escape sequence: \\" + Character.toString(read));
         };
+    }
+
+    public static String quote(final String input) {
+        return input
+            .replace("\\", "\\\\") // has to be first
+            .replace("\"", "\\\"")
+            .replace("/", "\\/")
+            .replace("\b", "\\b")
+            .replace("\f", "\\f")
+            .replace("\n", "\\n")
+            .replace("\r", "\\r")
+            .replace("\t", "\\t");
     }
 
     static String hex(final Source source) throws IOException, JsonParseException {
