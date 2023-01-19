@@ -20,7 +20,7 @@
       "key4": "value4"
     }
   },
-  "string": "Hello \"World\" \n\r\t\b\f\\\/",
+  "string": "Hello \"World\" \n\r\t\b\f\\\/ \u2020",
   "boolean": true,
   "null": null
 }
