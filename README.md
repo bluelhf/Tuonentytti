@@ -14,7 +14,7 @@ To-specification JSON Parser for Java.
 ## Usage Example
 
 `$ jshell --class-path path/to/Tuonentytti.jar`
-```jshelllanguage
+```jsh
 void main() throws Exception {
     try (final var stream = new URL("http://headers.jsontest.com/").openStream()) {
         final Source source = new InputStreamSource(stream);
