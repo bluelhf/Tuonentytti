@@ -61,8 +61,8 @@ public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<
         return removed;
     }
 
-    public Set<String> keySet() {
-        final Set<String> keySet = new HashSet<>();
+    public Set<JsonString> keySet() {
+        final Set<JsonString> keySet = new HashSet<>();
         for (final JsonMember member : this) {
             keySet.add(member.key());
         }

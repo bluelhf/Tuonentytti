@@ -53,7 +53,7 @@ public class JsonParser {
         readWhitespace(source);
         if (source.read() != ':') throw JSON_MEMBER_COLON_MISMATCH;
         final JsonValue<?> element = readElement(source);
-        return new JsonMember(name.get(), element);
+        return new JsonMember(name, element);
     }
 
     // </editor-fold>
