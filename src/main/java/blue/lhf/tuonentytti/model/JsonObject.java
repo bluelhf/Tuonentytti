@@ -10,6 +10,10 @@ public class JsonObject extends ArrayList<JsonMember> implements JsonValue<List<
 
     }
 
+    public JsonObject(final JsonMember... members) {
+        this.addAll(List.of(members));
+    }
+
     public JsonObject(final Collection<JsonMember> members) {
         this.addAll(members);
     }
