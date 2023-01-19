@@ -29,6 +29,4 @@ final JsonValue<?> mysteryValue = JsonParser.parse(mysteryStream);
 ```
 
 ## To-do
-- [ ] Tests for objects
-- [ ] Escaping in `toString()`
-- [ ] Documentation
+- Documentation
